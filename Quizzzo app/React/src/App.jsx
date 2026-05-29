@@ -7,9 +7,6 @@ import Instructor from "./components/Instructor";
 import Database from "./Database";
 import { getLs } from "./utils/storage";
 import "./App.css";
-
-import { Analytics } from "@vercel/analytics/react";
-
 export default function App() {
   const isAdmin = new URLSearchParams(window.location.search).get("view") === "admin";
   const [db, setDb] = useState({ quizzes: getLs("qz_quizzes"), a: getLs("qz_att") });
@@ -63,7 +60,6 @@ export default function App() {
           )}
         </>
       )}
-      <Analytics />
     </div>
   );
 }
