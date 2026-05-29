@@ -1,0 +1,6 @@
+.dashboard-wrap { padding: 30px; max-width: 900px; margin: 0 auto; background: white; min-height: 100vh; }
+.dashboard-wrap h2 { margin-bottom: 20px; color: #1a73e8; }
+.db-table { width: 100%; border-collapse: collapse; }
+.db-table th, .db-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+.db-table th { background: #1a73e8; color: white; }
+.db-table tr:hover { background: #f5f9ff; }

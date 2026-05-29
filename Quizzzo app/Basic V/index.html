@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizzzo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo">Quizzzo</div>
+  <div class="header-btns" id="auth-btns">
+    <button onclick="switchView('student')">Student Login</button>
+    <button onclick="switchView('instructor')">Instructor Login</button>
+  </div>
+</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('quiz')" id="tab-quiz">📝 Quiz</div>
+  <div class="tab" onclick="switchTab('analytics')" id="tab-analytics">📊 Analytics</div>
+  <div class="tab" onclick="switchTab('database')" id="tab-database">🗄️ Database</div>
+</div>
+
+<div class="panel active" id="panel-quiz">
+  <div class="card" id="view-home">
+    <h3>Welcome to Quizzzo</h3>
+    <p class="subtitle">Use the buttons in the top-right to login.</p>
+  </div>
+
+  <div class="card hidden" id="view-student-login">
+    <h3>Student Login</h3>
+    <input type="text" id="student-name" placeholder="Enter your name..." />
+    <button class="main-btn" onclick="startQuiz()">Start Quiz</button>
+    <div id="no-q-msg" class="msg-red hidden">No questions available yet.</div>
+  </div>
+
+  <div class="card hidden" id="view-quiz">
+    <p class="quiz-progress" id="progress-txt"></p>
+    <p class="quiz-q" id="q-text"></p>
+    <div id="options-area"></div>
+    <br/>
+    <button class="main-btn" onclick="nextQ()">Next</button>
+  </div>
+
+  <div class="card hidden result-box" id="view-result">
+    <h3>Your Result</h3>
+    <div class="score-big" id="score-display"></div>
+    <div class="bar-wrap"><div class="bar-fill" id="score-bar"></div></div>
+    <div class="pct-label" id="pct-display"></div>
+    <p class="subtitle">Analytics have opened in a new tab!</p>
+  </div>
+
+  <div class="card hidden" id="view-instructor-login">
+    <h3>Instructor Login</h3>
+    <input type="password" id="pwd-input" placeholder="Password..." />
+    <button class="main-btn red-btn" onclick="doLogin()">Login</button>
+    <div id="login-err" class="msg-red hidden">Wrong password!</div>
+    <p class="hint">Hint: admin123</p>
+  </div>
+
+  <div class="card hidden" id="view-dashboard">
+    <h3>Add Question</h3>
+    <input type="text" id="new-q" placeholder="Question..." />
+    <div id="opt-inputs"></div>
+    <br/>
+    <button class="main-btn red-btn" onclick="addQ()">Add Question</button>
+    <button class="gray-btn" onclick="clearAll()">Clear All</button>
+    <div id="add-msg" class="msg-green hidden">✅ Added!</div>
+
+    <h3 style="margin-top:22px;">All Questions (<span id="q-count">0</span>)</h3>
+    <div id="q-list"></div>
+  </div>
+</div>
+
+<div class="panel" id="panel-analytics">
+  <div class="analytics-grid" id="stats-grid">
+    <div class="stat-card"><div class="stat-num" id="stat-attempts">0</div><div class="stat-label">Total Attempts</div></div>
+    <div class="stat-card"><div class="stat-num" id="stat-avg">0%</div><div class="stat-label">Average Score</div></div>
+    <div class="stat-card"><div class="stat-num" id="stat-best">0%</div><div class="stat-label">Highest Score</div></div>
+    <div class="stat-card"><div class="stat-num" id="stat-questions">0</div><div class="stat-label">Total Questions</div></div>
+  </div>
+  <div class="db-wrap">
+    <div class="section-title">📋 Attempt History</div>
+    <table id="attempt-table">
+      <thead><tr><th>#</th><th>Student</th><th>Score</th><th>Percentage</th><th>Date & Time</th></tr></thead>
+      <tbody id="attempt-tbody"></tbody>
+    </table>
+    <div id="no-attempts" class="no-data">No attempts yet.</div>
+
+    <div class="section-title" style="margin-top:24px;">❓ Question Accuracy</div>
+    <table id="accuracy-table">
+      <thead><tr><th>#</th><th>Question</th><th>Attempted</th><th>Correct</th><th>Accuracy</th></tr></thead>
+      <tbody id="accuracy-tbody"></tbody>
+    </table>
+    <div id="no-accuracy" class="no-data">No data yet.</div>
+  </div>
+</div>
+
+<div class="panel" id="panel-database">
+  <div class="db-wrap">
+    <div class="db-section">
+      <h4>TABLE: students</h4>
+      <table><thead><tr><th>id</th><th>name</th><th>created_at</th></tr></thead><tbody id="db-students"></tbody></table>
+      <div id="no-students" class="no-data">Empty</div>
+    </div>
+    <div class="db-section">
+      <h4>TABLE: questions</h4>
+      <table><thead><tr><th>id</th><th>question</th><th>opt_a</th><th>opt_b</th><th>opt_c</th><th>opt_d</th><th>correct</th></tr></thead><tbody id="db-questions"></tbody></table>
+      <div id="no-dbq" class="no-data">Empty</div>
+    </div>
+    <div class="db-section">
+      <h4>TABLE: attempts</h4>
+      <table><thead><tr><th>id</th><th>student_id</th><th>student_name</th><th>score</th><th>total</th><th>pct</th><th>attempted_at</th></tr></thead><tbody id="db-attempts"></tbody></table>
+      <div id="no-dbattempts" class="no-data">Empty</div>
+    </div>
+    <div class="db-section">
+      <h4>TABLE: attempt_answers</h4>
+      <table><thead><tr><th>id</th><th>attempt_id</th><th>question_id</th><th>chosen</th><th>correct_ans</th><th>is_correct</th></tr></thead><tbody id="db-answers"></tbody></table>
+      <div id="no-dbanswers" class="no-data">Empty</div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+<script src="script.js"></script>

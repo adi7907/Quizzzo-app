@@ -1,0 +1,8 @@
+.db-wrap { padding: 30px; max-width: 960px; margin: 40px auto; background: white; border-radius: 5px; border: 1px solid #ddd; }
+.db-section { margin-bottom: 30px; }
+.db-section h4 { font-size: 15px; margin-bottom: 8px; color: #333; border-bottom: 2px solid #eee; padding-bottom: 6px; }
+.db-table { width: 100%; border-collapse: collapse; font-size: 13px; font-family: "Courier New", Courier, monospace; }
+.db-table th, .db-table td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+.db-table th { background: #f8f9fa; color: #555; font-weight: bold; }
+.db-table tr:hover { background: #f5f9ff; }
+.no-data { color: #aaa; font-size: 13px; font-style: italic; }

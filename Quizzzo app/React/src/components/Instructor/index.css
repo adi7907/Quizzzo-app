@@ -1,0 +1,5 @@
+.inst-box { padding: 10px; }
+.inst-input { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 3px; }
+.inst-btn { width: 100%; padding: 10px; background: #d93025; color: white; border: none; cursor: pointer; border-radius: 3px; }
+.opt-row { display: flex; gap: 10px; align-items: center; margin-bottom: 5px; }
+.opt-input { margin-bottom: 0; flex: 1; }

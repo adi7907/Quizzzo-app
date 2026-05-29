@@ -1,0 +1,26 @@
+.cover-wrap { text-align: center; padding: 50px 20px; }
+.cover-title { color: #1a73e8; font-size: 48px; margin-bottom: 8px; letter-spacing: 2px; }
+.cover-sub { color: #777; font-size: 16px; margin-bottom: 40px; }
+.cover-btns { display: flex; flex-direction: column; gap: 15px; max-width: 250px; margin: 0 auto; }
+.cover-btn { padding: 12px; background: #1a73e8; color: white; border: none; font-size: 16px; cursor: pointer; border-radius: 4px; }
+.inst-btn { background: #333; }
+.cover-btn:hover { opacity: 0.9; }
+
+.tiny-clear-btn {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #d93025;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.6; 
+  transition: opacity 0.2s;
+}
+
+.tiny-clear-btn:hover {
+  opacity: 1; 
+}

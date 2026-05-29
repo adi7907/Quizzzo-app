@@ -1,0 +1,15 @@
+.progress { color: #777; margin-bottom: 10px; font-size: 14px; }
+.q-text { margin-bottom: 15px; color: #333; } 
+.opt-btn { 
+  display: block; 
+  width: 100%; 
+  margin: 8px 0; 
+  padding: 10px; 
+  cursor: pointer; 
+  text-align: left; 
+  background: #fafafa; 
+  border: 1px solid #ddd; 
+  color: #333; /* <-- THIS FIXES THE INVISIBLE TEXT */
+  font-size: 14px;
+}
+.opt-btn:hover { background: #eee; }
